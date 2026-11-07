@@ -641,3 +641,20 @@ body { background: radial-gradient(1100px 620px at 6% -8%, rgba(205, 239, 224, .
 	.primary-nav .sub-menu a, .is-scrolled .primary-nav .sub-menu a { color: rgba(255, 255, 255, .8); font-size: 1.3rem; padding: .45rem 0; }
 	.primary-nav .sub-menu .current-menu-item > a { background: none !important; color: var(--sun); }
 }
+
+/* ---- Refinements: remove generic ornaments ---- */
+.hero__kicker { padding: 0; background: none; backdrop-filter: none; font: 700 .95rem var(--f-head); letter-spacing: .02em; color: var(--sun); }
+.hero__cue { width: auto; height: auto; margin: 0; left: 50%; transform: translateX(-50%); display: grid; justify-items: center; gap: .6rem; background: none !important; box-shadow: none !important; backdrop-filter: none !important; color: #fff; font: 700 .8rem var(--f-head); letter-spacing: .12em; text-transform: uppercase; text-decoration: none; }
+.hero__cue-line { display: block; width: 2px; height: 46px; background: rgba(255,255,255,.3); position: relative; overflow: hidden; }
+.hero__cue-line::after { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 50%; background: #fff; animation: cue-line 2s var(--inout) infinite; }
+@keyframes cue-line { from { transform: translateY(-100%); } to { transform: translateY(200%); } }
+.hero--photo .hero__cue span { all: unset; }
+.hero--photo .hero__cue .hero__cue-line { display: block; width: 2px; height: 46px; }
+.marquee li::after { content: ""; width: 2.4rem; height: 4px; border-radius: 4px; background: var(--sun); font-size: 0; opacity: .9; }
+.marquee li:nth-child(even)::after { background: var(--lagoon); }
+.mnm-progress__bar { height: 8px; border-radius: 2px; background: #dfe9e8; }
+.mnm-progress__fill { border-radius: 2px; background: var(--mnm-blue); }
+.mnm-progress__raised { font-size: 2rem; letter-spacing: -.03em; }
+.scroll-progress { background: var(--sun); height: 3px; }
+.site-footer__mark { -webkit-text-stroke: 0; color: rgba(255,255,255,.055); font-size: clamp(3rem, 11.6vw, 11.5rem); line-height: .8; text-align: left; padding-left: var(--gut); }
+@media (prefers-reduced-motion: reduce) { .hero__cue-line::after { animation: none; } }

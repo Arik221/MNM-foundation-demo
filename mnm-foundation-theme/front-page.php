@@ -37,7 +37,7 @@ $circ   = 326.7;
 
 	<div class="wrap hero__grid">
 		<div class="hero__inner">
-			<p class="hero__kicker"><span class="dot" aria-hidden="true"></span><?php echo esc_html( mnm_t_setting( 'tagline', 'Fund and Fight' ) ); ?> <span class="sep">/</span> Ukhrul, Manipur</p>
+			<p class="hero__kicker"><?php echo esc_html( mnm_t_setting( 'tagline', 'Fund and Fight' ) ); ?> &mdash; Ukhrul, Manipur</p>
 			<h1 class="hero__title" aria-label="<?php echo esc_attr( $heading ); ?>">
 				<span class="hero__line" data-split aria-hidden="true"><?php echo esc_html( $parts[0] ); ?></span>
 				<?php if ( ! empty( $parts[1] ) ) : ?><span class="hero__line hero__line--accent" data-split aria-hidden="true"><?php echo esc_html( $parts[1] ); ?></span><?php endif; ?>
@@ -76,7 +76,7 @@ $circ   = 326.7;
 			<?php wp_reset_postdata(); endif; ?>
 		</div>
 	</div>
-	<a class="hero__cue" href="#statement" aria-label="<?php esc_attr_e( 'Scroll to content', 'mnm-foundation-theme' ); ?>"><span></span></a>
+	<a class="hero__cue" href="#statement"><span class="hero__cue-line" aria-hidden="true"></span><?php esc_html_e( 'Scroll', 'mnm-foundation-theme' ); ?></a>
 </section>
 
 <div class="marquee" aria-hidden="true">
