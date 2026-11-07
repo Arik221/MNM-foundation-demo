@@ -133,6 +133,18 @@ function mnm_demo_post( $type, $slug, array $args, array $meta = array(), array 
  */
 function mnm_seed_demo() {
 	mnm_register_post_types();
+	// Keep seeding light on constrained hosts (browser-based Playground, small shared hosting).
+	if ( function_exists( 'wp_raise_memory_limit' ) ) {
+		wp_raise_memory_limit( 'image' );
+	}
+	add_filter(
+		'intermediate_image_sizes_advanced',
+		function ( $sizes ) {
+			unset( $sizes['1536x1536'], $sizes['2048x2048'] );
+			return $sizes;
+		}
+	);
+	add_filter( 'big_image_size_threshold', '__return_false' );
 	$now = current_time( 'timestamp' ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp
 	$day = function ( $offset, $h = 10 ) use ( $now ) {
 		return gmdate( 'Y-m-d', $now + $offset * DAY_IN_SECONDS ) . sprintf( 'T%02d:00', $h );
@@ -180,7 +192,13 @@ function mnm_seed_demo() {
 	}
 
 	// Real photographs (assets/demo/photos/) take the first gallery slots; placeholders fill any that remain.
-	$real = glob( MNM_CORE_DIR . 'assets/demo/photos/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', GLOB_BRACE );
+	// GLOB_BRACE is not available on every PHP build (e.g. WordPress Playground), so match extensions manually.
+	$real = array();
+	foreach ( (array) glob( MNM_CORE_DIR . 'assets/demo/photos/*' ) as $candidate ) {
+		if ( is_file( $candidate ) && preg_match( '/\.(jpe?g|png|webp)$/i', $candidate ) ) {
+			$real[] = $candidate;
+		}
+	}
 	$hero_file = '';
 	if ( $real ) {
 		sort( $real );
