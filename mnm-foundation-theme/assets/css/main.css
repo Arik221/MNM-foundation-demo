@@ -658,3 +658,13 @@ body { background: radial-gradient(1100px 620px at 6% -8%, rgba(205, 239, 224, .
 .scroll-progress { background: var(--sun); height: 3px; }
 .site-footer__mark { -webkit-text-stroke: 0; color: rgba(255,255,255,.055); font-size: clamp(3rem, 11.6vw, 11.5rem); line-height: .8; text-align: left; padding-left: var(--gut); }
 @media (prefers-reduced-motion: reduce) { .hero__cue-line::after { animation: none; } }
+
+/* Scroll cue: text + downward arrow; marquee without separators */
+.hero .hero__cue { position: absolute; left: 50%; bottom: 1.6rem; margin: 0; width: auto; height: auto; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: .5rem; color: #fff; text-decoration: none; background: none; box-shadow: none; border-radius: 0; z-index: 4; font: 700 .8rem var(--f-head); letter-spacing: .14em; text-transform: uppercase; }
+.hero .hero__cue-arrow { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.14); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.7); animation: cue-bob 1.8s var(--inout) infinite; }
+.hero .hero__cue-arrow svg { transform: rotate(90deg); }
+@keyframes cue-bob { 50% { transform: translateY(7px); } }
+.marquee li::after { content: none; }
+.marquee li { gap: 0; padding-inline: 2rem; }
+@media (prefers-reduced-motion: reduce) { .hero .hero__cue-arrow { animation: none; } }
+.hero .hero__cue { bottom: 4.2rem; } .has-announcement .hero { min-height: max(calc(100svh - 37px), 740px); }
