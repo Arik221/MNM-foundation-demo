@@ -57,9 +57,6 @@ $soc   = function_exists( 'mnm_social_links' ) ? mnm_social_links() : array();
 	</div>
 	<div class="wrap site-footer__base">
 		<p>&copy; <?php echo esc_html( wp_date( 'Y' ) ); ?> <?php echo esc_html( mnm_t_setting( 'org_name', 'MNM Foundation' ) ); ?>. <?php echo esc_html( mnm_t_setting( 'footer_note' ) ); ?></p>
-		<?php if ( function_exists( 'mnm_is_demo_mode' ) && mnm_is_demo_mode() ) : ?>
-			<p class="site-footer__proto"><?php esc_html_e( 'Website prototype. Sample content is labelled.', 'mnm-foundation-theme' ); ?></p>
-		<?php endif; ?>
 	</div>
 	<div class="site-footer__mark" aria-hidden="true">MNM Foundation</div>
 </footer>

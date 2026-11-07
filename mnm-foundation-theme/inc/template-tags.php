@@ -246,7 +246,6 @@ function mnm_t_card_project( $id ) {
 			<span class="tile__media"><?php echo mnm_t_thumb( $id, 'mnm-card' ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span>
 			<span class="tile__top">
 				<?php if ( $status && isset( $labels[ $status ] ) ) : ?><span class="chip status-<?php echo esc_attr( $status ); ?>"><?php echo esc_html( $labels[ $status ] ); ?></span><?php endif; ?>
-				<?php echo mnm_t_sample_badge( $id, __( 'Sample', 'mnm-foundation-theme' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			</span>
 			<span class="tile__body">
 				<span class="tile__meta">
@@ -275,7 +274,7 @@ function mnm_t_card_event( $id ) {
 			<div class="event-row__date" aria-hidden="true"><strong><?php echo esc_html( $d['day'] ); ?></strong><span><?php echo esc_html( $d['month'] ); ?></span><small><?php echo esc_html( $d['year'] ); ?></small></div>
 		<?php endif; ?>
 		<div class="event-row__body">
-			<h3><a href="<?php echo esc_url( get_permalink( $id ) ); ?>"><?php echo esc_html( get_the_title( $id ) ); ?></a> <?php echo mnm_t_sample_badge( $id, __( 'Sample event', 'mnm-foundation-theme' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></h3>
+			<h3><a href="<?php echo esc_url( get_permalink( $id ) ); ?>"><?php echo esc_html( get_the_title( $id ) ); ?></a></h3>
 			<p class="event-row__meta">
 				<?php if ( $d ) : ?><span><?php echo mnm_t_icon( 'calendar', 16 ); // phpcs:ignore WordPress.Security.EscapeOutput ?> <?php echo esc_html( $d['full'] ); ?></span><?php endif; ?>
 				<?php if ( $venue ) : ?><span><?php echo mnm_t_icon( 'pin', 16 ); // phpcs:ignore WordPress.Security.EscapeOutput ?> <?php echo esc_html( $venue ); ?></span><?php endif; ?>

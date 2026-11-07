@@ -188,9 +188,6 @@ function mnm_render_stats() {
 		);
 	}
 	echo '</div>';
-	if ( mnm_setting( 'stats_sample' ) ) {
-		echo '<p class="mnm-stats__note">' . mnm_demo_badge( __( 'Sample figures for demonstration only', 'mnm-foundation-core' ) ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput
-	}
 	return ob_get_clean();
 }
 
@@ -343,11 +340,6 @@ function mnm_render_registration_form() {
 	echo '<h3>' . esc_html__( 'You are registered', 'mnm-foundation-core' ) . '</h3>';
 	echo '<p>' . esc_html__( 'Thank you for registering for the marathon. Please keep your reference number:', 'mnm-foundation-core' ) . '</p>';
 	echo '<p class="mnm-reg__ref" data-mnm-ref>' . esc_html( isset( $flash['ref'] ) ? $flash['ref'] : '' ) . '</p>';
-	if ( mnm_is_demo_mode() ) {
-		echo '<p class="mnm-reg__demo">' . mnm_demo_badge( __( 'Demonstration mode', 'mnm-foundation-core' ) ) . ' ' . esc_html__( 'This is a prototype: your entry was saved in the demo database and no email or payment was sent.', 'mnm-foundation-core' ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput
-	} else {
-		echo '<p>' . esc_html__( 'A confirmation email is on its way.', 'mnm-foundation-core' ) . '</p>';
-	}
 	echo '</div>';
 
 	if ( 'closed' === mnm_setting( 'marathon_status', 'open' ) ) {
@@ -391,9 +383,6 @@ function mnm_render_registration_form() {
 		$err
 	);
 	echo '<button type="submit" class="mnm-btn mnm-btn--lg">' . esc_html__( 'Register for the marathon', 'mnm-foundation-core' ) . '</button>';
-	if ( mnm_is_demo_mode() ) {
-		echo '<p class="mnm-form__demo">' . mnm_demo_badge( __( 'Demonstration mode', 'mnm-foundation-core' ) ) . ' ' . esc_html__( 'Entries are saved for demonstration only. No payment is taken.', 'mnm-foundation-core' ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput
-	}
 	echo '</form></div>';
 	return ob_get_clean();
 }
@@ -411,9 +400,6 @@ function mnm_render_contact_form( $topic = '' ) {
 	ob_start();
 	echo '<div class="mnm-reg" id="contact-form" data-mnm-reg>';
 	echo '<div class="mnm-reg__success" data-mnm-success' . ( $ok ? '' : ' hidden' ) . ' tabindex="-1"><h3>' . esc_html__( 'Message sent', 'mnm-foundation-core' ) . '</h3><p>' . esc_html__( 'Thank you for getting in touch. We will reply as soon as we can.', 'mnm-foundation-core' ) . '</p>';
-	if ( mnm_is_demo_mode() ) {
-		echo '<p class="mnm-reg__demo">' . mnm_demo_badge( __( 'Demonstration mode', 'mnm-foundation-core' ) ) . ' ' . esc_html__( 'No email was sent from this prototype.', 'mnm-foundation-core' ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput
-	}
 	echo '</div>';
 	echo '<form class="mnm-form" method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" novalidate data-mnm-form="contact"' . ( $ok ? ' hidden' : '' ) . '>';
 	echo '<input type="hidden" name="action" value="mnm_contact" />';

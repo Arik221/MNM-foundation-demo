@@ -16,7 +16,6 @@ $cats = get_the_terms( get_the_ID(), 'mnm_article_cat' );
 		</p>
 		<h1 class="h1"><?php the_title(); ?></h1>
 		<?php if ( has_excerpt() ) : ?><p class="lede"><?php echo esc_html( get_the_excerpt() ); ?></p><?php endif; ?>
-		<?php echo mnm_t_sample_badge( get_the_ID(), __( 'Sample article', 'mnm-foundation-theme' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 	</div></header>
 	<?php if ( has_post_thumbnail() ) : ?>
 		<div class="wrap article__media"><?php the_post_thumbnail( 'mnm-wide', array( 'fetchpriority' => 'high' ) ); ?></div>

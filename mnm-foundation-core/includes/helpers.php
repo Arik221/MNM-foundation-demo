@@ -46,7 +46,7 @@ function mnm_settings_defaults() {
 		'stat_3_label'         => '',
 		'stat_4_value'         => '',
 		'stat_4_label'         => '',
-		'stats_sample'         => 1,
+		'stats_sample'         => 0,
 		'footer_text'          => 'MNM Foundation is a family-led, community-rooted non-profit based in Ukhrul, Manipur, India.',
 		'footer_note'          => '',
 		'donate_url'           => '',
@@ -112,7 +112,7 @@ function mnm_is_demo_mode() {
  * @return string
  */
 function mnm_demo_badge( $text = '' ) {
-	if ( ! mnm_is_demo_mode() ) {
+	if ( ! mnm_is_demo_mode() || ! is_admin() ) {
 		return '';
 	}
 	$text = $text ? $text : __( 'Demonstration data', 'mnm-foundation-core' );

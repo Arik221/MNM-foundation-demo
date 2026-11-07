@@ -322,7 +322,7 @@ function mnm_render_field( $name, $value, $def, $id = '' ) {
 					'order'          => 'ASC',
 				)
 			);
-			printf( '<select id="%1$s" name="%2$s"><option value="">%3$s</option>', esc_attr( $id ), esc_attr( $name ), esc_html__( '— None —', 'mnm-foundation-core' ) );
+			printf( '<select id="%1$s" name="%2$s"><option value="">%3$s</option>', esc_attr( $id ), esc_attr( $name ), esc_html__( 'None', 'mnm-foundation-core' ) );
 			foreach ( $posts as $p ) {
 				printf( '<option value="%1$d"%2$s>%3$s</option>', (int) $p->ID, selected( (int) $value, (int) $p->ID, false ), esc_html( get_the_title( $p ) ) );
 			}

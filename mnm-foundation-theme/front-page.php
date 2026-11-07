@@ -37,7 +37,7 @@ $circ   = 326.7;
 
 	<div class="wrap hero__grid">
 		<div class="hero__inner">
-			<p class="hero__kicker"><?php echo esc_html( mnm_t_setting( 'tagline', 'Fund and Fight' ) ); ?> &mdash; Ukhrul, Manipur</p>
+			<p class="hero__kicker"><?php echo esc_html( mnm_t_setting( 'tagline', 'Fund and Fight' ) ); ?>, Ukhrul, Manipur</p>
 			<h1 class="hero__title" aria-label="<?php echo esc_attr( $heading ); ?>">
 				<span class="hero__line" data-split aria-hidden="true"><?php echo esc_html( $parts[0] ); ?></span>
 				<?php if ( ! empty( $parts[1] ) ) : ?><span class="hero__line hero__line--accent" data-split aria-hidden="true"><?php echo esc_html( $parts[1] ); ?></span><?php endif; ?>

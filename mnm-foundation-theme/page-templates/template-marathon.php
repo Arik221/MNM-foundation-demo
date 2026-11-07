@@ -29,14 +29,13 @@ $gallery  = function_exists( 'mnm_gallery_items' ) ? mnm_gallery_items( array( '
 			<a class="btn btn--glass btn--lg" href="<?php echo esc_url( function_exists( 'mnm_donate_url' ) ? mnm_donate_url() : '#' ); ?>"><?php esc_html_e( 'Donate', 'mnm-foundation-theme' ); ?></a>
 		</div>
 	</div>
-	<?php if ( $banner && get_post_meta( $banner, '_mnm_demo', true ) ) : ?><span class="demo-tag"><?php esc_html_e( 'Demo image: replace with a photograph', 'mnm-foundation-theme' ); ?></span><?php endif; ?>
 	<div class="hero__ribbon" aria-hidden="true"><span class="stripes"></span></div>
 </section>
 
 <section class="section section--tight">
 	<div class="wrap info-strip">
-		<div class="info-tile reveal"><?php echo mnm_t_icon( 'calendar', 26 ); // phpcs:ignore WordPress.Security.EscapeOutput ?><div><span><?php esc_html_e( 'Date', 'mnm-foundation-theme' ); ?></span><strong><?php echo esc_html( $date ? $date : __( 'To be announced', 'mnm-foundation-theme' ) ); ?></strong><?php if ( ! $date ) : ?><em class="placeholder"><?php esc_html_e( 'Placeholder', 'mnm-foundation-theme' ); ?></em><?php endif; ?></div></div>
-		<div class="info-tile reveal"><?php echo mnm_t_icon( 'pin', 26 ); // phpcs:ignore WordPress.Security.EscapeOutput ?><div><span><?php esc_html_e( 'Venue', 'mnm-foundation-theme' ); ?></span><strong><?php echo esc_html( $venue ? $venue : __( 'To be announced', 'mnm-foundation-theme' ) ); ?></strong><?php if ( ! $venue ) : ?><em class="placeholder"><?php esc_html_e( 'Placeholder', 'mnm-foundation-theme' ); ?></em><?php endif; ?></div></div>
+		<div class="info-tile reveal"><?php echo mnm_t_icon( 'calendar', 26 ); // phpcs:ignore WordPress.Security.EscapeOutput ?><div><span><?php esc_html_e( 'Date', 'mnm-foundation-theme' ); ?></span><strong><?php echo esc_html( $date ? $date : __( 'To be announced', 'mnm-foundation-theme' ) ); ?></strong></div></div>
+		<div class="info-tile reveal"><?php echo mnm_t_icon( 'pin', 26 ); // phpcs:ignore WordPress.Security.EscapeOutput ?><div><span><?php esc_html_e( 'Venue', 'mnm-foundation-theme' ); ?></span><strong><?php echo esc_html( $venue ? $venue : __( 'To be announced', 'mnm-foundation-theme' ) ); ?></strong></div></div>
 		<div class="info-tile reveal"><?php echo mnm_t_icon( 'people', 26 ); // phpcs:ignore WordPress.Security.EscapeOutput ?><div><span><?php esc_html_e( 'Registered', 'mnm-foundation-theme' ); ?></span><strong data-mnm-regcount><?php echo (int) $count; ?></strong><?php echo function_exists( 'mnm_demo_badge' ) ? mnm_demo_badge( __( 'Demo count', 'mnm-foundation-theme' ) ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?></div></div>
 	</div>
 </section>
@@ -48,7 +47,7 @@ $gallery  = function_exists( 'mnm_gallery_items' ) ? mnm_gallery_items( array( '
 			<h2 class="h2"><?php esc_html_e( 'Every step funds a child\'s education', 'mnm-foundation-theme' ); ?></h2>
 			<p class="lede"><?php echo esc_html( mnm_t_setting( 'marathon_text' ) ); ?></p>
 			<?php if ( $races ) : ?>
-				<h3 class="h4"><?php esc_html_e( 'Race categories', 'mnm-foundation-theme' ); ?> <em class="placeholder"><?php esc_html_e( 'Placeholders', 'mnm-foundation-theme' ); ?></em></h3>
+				<h3 class="h4"><?php esc_html_e( 'Race categories', 'mnm-foundation-theme' ); ?></h3>
 				<ul class="races">
 					<?php foreach ( $races as $label => $desc ) : ?><li><strong><?php echo esc_html( $label ); ?></strong><span><?php echo esc_html( $desc ); ?></span></li><?php endforeach; ?>
 				</ul>
@@ -84,7 +83,7 @@ $gallery  = function_exists( 'mnm_gallery_items' ) ? mnm_gallery_items( array( '
 			<?php foreach ( $updates as $u ) : ?>
 				<li class="reveal">
 					<time datetime="<?php echo esc_attr( get_the_date( 'c', $u ) ); ?>"><?php echo esc_html( get_the_date( '', $u ) ); ?></time>
-					<h3><?php echo esc_html( get_the_title( $u ) ); ?> <?php echo mnm_t_sample_badge( $u->ID, __( 'Sample', 'mnm-foundation-theme' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></h3>
+					<h3><?php echo esc_html( get_the_title( $u ) ); ?></h3>
 					<div class="prose"><?php echo wp_kses_post( apply_filters( 'the_content', $u->post_content ) ); ?></div>
 				</li>
 			<?php endforeach; ?>

@@ -42,7 +42,6 @@ mnm_t_page_header( __( 'Project', 'mnm-foundation-theme' ), get_the_title(), get
 				<?php if ( $benef ) : ?><div><dt><?php esc_html_e( 'People supported', 'mnm-foundation-theme' ); ?></dt><dd><?php echo esc_html( number_format_i18n( (float) $benef ) ); ?></dd></div><?php endif; ?>
 				<?php if ( $prog && get_post( $prog ) ) : ?><div><dt><?php esc_html_e( 'Programme', 'mnm-foundation-theme' ); ?></dt><dd><a href="<?php echo esc_url( get_permalink( $prog ) ); ?>"><?php echo esc_html( get_the_title( $prog ) ); ?></a></dd></div><?php endif; ?>
 			</dl>
-			<?php echo mnm_t_sample_badge( $id, __( 'Sample project: demonstration content', 'mnm-foundation-theme' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			<a class="btn btn--dark btn--block" href="<?php echo esc_url( function_exists( 'mnm_donate_url' ) ? mnm_donate_url() : '#' ); ?>"><?php esc_html_e( 'Support this work', 'mnm-foundation-theme' ); ?></a>
 		</aside>
 	</div>

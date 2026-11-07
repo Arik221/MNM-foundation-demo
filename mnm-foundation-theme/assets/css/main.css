@@ -691,3 +691,34 @@ body { background: radial-gradient(1100px 620px at 6% -8%, rgba(205, 239, 224, .
 	.site-header__inner .nav-cta { grid-column: 3; justify-self: end; display: inline-flex; }
 }
 @media (min-width: 961px) and (max-width: 1180px) { .site-header__inner .nav-cta { display: none; } }
+
+/* ---- v6: fewer generic cards, no tick icons ---- */
+.ticks { gap: 1rem; }
+.ticks li { display: block; position: relative; padding-left: 1.4rem; }
+.ticks li svg { display: none; }
+.ticks li::before { content: ""; position: absolute; left: 0; top: .72em; width: .7rem; height: 3px; background: var(--teal); }
+.ticks--light li::before { background: var(--sun); }
+.races { gap: 0; margin-top: 1.4rem; }
+.races li { display: grid; grid-template-columns: minmax(150px, .8fr) 1.2fr; align-items: baseline; gap: 1.5rem; padding: 1.3rem 0; background: none; border-radius: 0; box-shadow: none !important; }
+.races li strong { font: 800 1.7rem/1.1 var(--f-head); letter-spacing: -.03em; color: var(--teal); }
+.races li:nth-child(2) strong { color: #8a6500; } .races li:nth-child(3) strong { color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .races li:hover { transform: none; background: none; } }
+.info-strip { background: var(--night); border-radius: 28px; padding: 2.2rem 2.4rem; gap: 2rem; }
+.info-tile { background: none; box-shadow: none; padding: 0; color: #fff; }
+.info-tile > svg { color: var(--sun); }
+.info-tile span { color: rgba(255,255,255,.7); }
+.info-tile strong { color: #fff; }
+.stats .mnm-stat { background: none; box-shadow: none; padding: 0 0 0 1.2rem; border-radius: 0; box-shadow: -3px 0 0 var(--sun); }
+.stats .mnm-stat:nth-child(2) { box-shadow: -3px 0 0 var(--mint); } .stats .mnm-stat:nth-child(3) { box-shadow: -3px 0 0 var(--sky); } .stats .mnm-stat:nth-child(4) { box-shadow: -3px 0 0 #fff; }
+.values { gap: 2.5rem 2rem; }
+.value { background: none; box-shadow: none; border-radius: 0; padding: 0; }
+.value::before { content: ""; display: block; width: 36px; height: 6px; margin-bottom: 1.1rem; background: var(--sun); }
+.value:nth-child(2n)::before { background: var(--lagoon); } .value:nth-child(3n)::before { background: var(--sky); }
+.value h3 { font-size: 1.4rem; }
+@media (hover: hover) and (pointer: fine) { .value:hover { transform: none; box-shadow: none; } }
+.mvd__card { border-radius: 14px; padding: 2.8rem 2.4rem; }
+.mvd__card h3 { font-size: 2rem; }
+.mvd__card--blue { background: var(--teal); } .mvd__card--blue h3, .mvd__card--blue .ticks li, .mvd__card--blue p { color: #fff; }
+.mvd__card--blue .ticks li::before { background: var(--sun); }
+.mvd__card--green { background: var(--mint); } .mvd__card--yellow { background: var(--sun); } .mvd__card--yellow p { color: #3d3208; }
+@media (max-width: 640px) { .races li { grid-template-columns: 1fr; gap: .2rem; } .info-strip { padding: 1.6rem; } }

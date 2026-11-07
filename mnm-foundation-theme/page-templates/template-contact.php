@@ -30,7 +30,7 @@ mnm_t_page_header( __( 'Contact us', 'mnm-foundation-theme' ), __( 'We would lov
 			<?php if ( $map && 0 === strpos( $map, 'https://' ) ) : ?>
 				<iframe src="<?php echo esc_url( $map ); ?>" title="<?php esc_attr_e( 'Map showing the foundation office', 'mnm-foundation-theme' ); ?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 			<?php else : ?>
-				<div class="map__ph"><?php echo mnm_t_icon( 'pin', 34 ); // phpcs:ignore WordPress.Security.EscapeOutput ?><strong><?php esc_html_e( 'Map placeholder', 'mnm-foundation-theme' ); ?></strong><span><?php esc_html_e( 'Ukhrul, Manipur 795142. Add a Google Maps embed address in Foundation, Website Settings.', 'mnm-foundation-theme' ); ?></span></div>
+				<div class="map__ph"><?php echo mnm_t_icon( 'pin', 34 ); // phpcs:ignore WordPress.Security.EscapeOutput ?><strong><?php esc_html_e( 'Ukhrul, Manipur', 'mnm-foundation-theme' ); ?></strong><span><?php esc_html_e( 'H/No. 25, Kahum Tang, Ukhrul, Manipur 795142', 'mnm-foundation-theme' ); ?></span></div>
 			<?php endif; ?>
 		</div>
 	</div>

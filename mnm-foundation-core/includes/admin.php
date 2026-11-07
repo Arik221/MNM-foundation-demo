@@ -458,7 +458,7 @@ function mnm_attachment_fields( $fields, $post ) {
 	$terms   = get_terms( array( 'taxonomy' => 'mnm_gallery_cat', 'hide_empty' => false ) );
 	$current = wp_get_object_terms( $post->ID, 'mnm_gallery_cat', array( 'fields' => 'ids' ) );
 	$cur     = ! is_wp_error( $current ) && $current ? (int) $current[0] : 0;
-	$html    = '<select name="attachments[' . (int) $post->ID . '][mnm_collection]"><option value="0">' . esc_html__( '— Not in gallery —', 'mnm-foundation-core' ) . '</option>';
+	$html    = '<select name="attachments[' . (int) $post->ID . '][mnm_collection]"><option value="0">' . esc_html__( 'Not in gallery', 'mnm-foundation-core' ) . '</option>';
 	if ( ! is_wp_error( $terms ) ) {
 		foreach ( $terms as $t ) {
 			$html .= '<option value="' . (int) $t->term_id . '"' . selected( $cur, $t->term_id, false ) . '>' . esc_html( $t->name ) . '</option>';

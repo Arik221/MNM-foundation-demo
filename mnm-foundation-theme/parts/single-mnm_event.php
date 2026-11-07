@@ -33,7 +33,6 @@ mnm_t_page_header( $d && $d['upcoming'] ? __( 'Upcoming event', 'mnm-foundation-
 				<?php endif; ?>
 				<?php if ( $venue ) : ?><div><dt><?php esc_html_e( 'Venue', 'mnm-foundation-theme' ); ?></dt><dd><?php echo esc_html( $venue ); ?></dd></div><?php endif; ?>
 			</dl>
-			<?php echo mnm_t_sample_badge( $id, __( 'Sample event', 'mnm-foundation-theme' ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
 			<?php if ( $reg && $d && $d['upcoming'] ) : ?>
 				<a class="btn btn--dark btn--block" href="<?php echo esc_url( $reg ); ?>"><?php echo esc_html( $reg_lbl ? $reg_lbl : __( 'Register now', 'mnm-foundation-theme' ) ); ?></a>
 			<?php endif; ?>

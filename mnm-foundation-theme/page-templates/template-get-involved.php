@@ -19,8 +19,8 @@ $phone     = mnm_t_setting( 'phone' );
 		<?php endforeach; ?>
 	</div>
 	<div class="notice-box reveal">
-		<strong><?php esc_html_e( 'Online payments are coming soon.', 'mnm-foundation-theme' ); ?></strong>
-		<span><?php esc_html_e( 'This prototype does not take payments. To donate for now, please call or write to the foundation.', 'mnm-foundation-theme' ); ?>
+		<strong><?php esc_html_e( 'Online donations are coming soon.', 'mnm-foundation-theme' ); ?></strong>
+		<span><?php esc_html_e( 'To donate now, please call or write to us.', 'mnm-foundation-theme' ); ?>
 			<?php if ( $phone ) : ?><a href="<?php echo esc_url( mnm_tel_href( $phone ) ); ?>"><?php echo esc_html( $phone ); ?></a><?php endif; ?></span>
 	</div>
 </div></section>

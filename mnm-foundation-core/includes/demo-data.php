@@ -150,16 +150,16 @@ function mnm_seed_demo() {
 		return gmdate( 'Y-m-d', $now + $offset * DAY_IN_SECONDS ) . sprintf( 'T%02d:00', $h );
 	};
 	$demo = array( '_mnm_demo' => '1' );
-	$note = 'Demonstration image: replace with a real photograph.';
+	$note = '';
 
 	/* ---------- Media ---------- */
 	$img = array(
-		'hero'      => mnm_demo_image( 'hero-demo.jpg', 'Homepage hero (demo)', $note, 'Illustration of green and blue hills under a yellow sun' ),
-		'banner'    => mnm_demo_image( 'marathon-banner-demo.jpg', 'Marathon banner (demo)', $note, 'Illustration of golden hills' ),
-		'campaign'  => mnm_demo_image( 'campaign-demo.jpg', 'Campaign image (demo)', $note, 'Illustration of green hills' ),
-		'p_edu'     => mnm_demo_image( 'programme-education-demo.jpg', 'Education programme (demo)', $note, 'Illustration of hills' ),
-		'p_digital' => mnm_demo_image( 'programme-digital-demo.jpg', 'Digital literacy programme (demo)', $note, 'Illustration of hills at dusk' ),
-		'p_comm'    => mnm_demo_image( 'programme-community-demo.jpg', 'Community programme (demo)', $note, 'Illustration of green hills' ),
+		'hero'      => mnm_demo_image( 'hero-demo.jpg', 'Homepage hero', $note, 'Illustration of green and blue hills under a yellow sun' ),
+		'banner'    => mnm_demo_image( 'marathon-banner-demo.jpg', 'Marathon banner', $note, 'Illustration of golden hills' ),
+		'campaign'  => mnm_demo_image( 'campaign-demo.jpg', 'Campaign image', $note, 'Illustration of green hills' ),
+		'p_edu'     => mnm_demo_image( 'programme-education-demo.jpg', 'Education programme', $note, 'Illustration of hills' ),
+		'p_digital' => mnm_demo_image( 'programme-digital-demo.jpg', 'Digital literacy programme', $note, 'Illustration of hills at dusk' ),
+		'p_comm'    => mnm_demo_image( 'programme-community-demo.jpg', 'Community programme', $note, 'Illustration of green hills' ),
 	);
 	$mem_files = array(
 		array( 'memorial-michael-hunphun-luiyi.jpg', 'Lt. Michael Hunphun Luiyi', 'Lt. Michael Hunphun Luiyi' ),
@@ -188,7 +188,7 @@ function mnm_seed_demo() {
 	);
 	$gal_ids = array();
 	foreach ( $gal as $g ) {
-		$gal_ids[ $g[0] ] = mnm_demo_image( "gallery-{$g[0]}-demo.jpg", $g[2] . ' (demo)', $g[2] . '. ' . $note, $g[2], $g[1] );
+		$gal_ids[ $g[0] ] = mnm_demo_image( "gallery-{$g[0]}-demo.jpg", $g[2] . '', $g[2], $g[2], $g[1] );
 	}
 
 	// Real photographs (assets/demo/photos/) take the first gallery slots; placeholders fill any that remain.
@@ -233,7 +233,7 @@ function mnm_seed_demo() {
 				}
 			}
 			$title = ucwords( str_replace( array( '-', '_' ), ' ', preg_replace( '/\.[a-z]+$/i', '', $base ) ) );
-			$cap   = isset( $credits[ $base ] ) ? $credits[ $base ] : $title;
+			$cap   = $title;
 			$id    = mnm_demo_image( $base, $title, $cap, $cap, $term );
 			if ( $id ) {
 				$real_ids[] = $id;
@@ -355,12 +355,12 @@ function mnm_seed_demo() {
 
 	/* ---------- Projects (SAMPLE) ---------- */
 	$projects = array(
-		array( 'school-fee-support-fund', 'School Fee Support Fund', 'Sample project: covering school fees for children whose families cannot afford them.', 'ongoing', '2026', 'edu', 'Education', 'Ukhrul', array( 'Children able to stay in school despite family hardship', 'A transparent record of how funds are used' ), '02' ),
-		array( 'village-computer-corner', 'Village Computer Corner', 'Sample project: a small computer training corner for a remote village.', 'planned', '2027', 'dig', 'Digital Literacy', 'Theiva Village', array( 'Basic computer skills for village residents', 'A shared learning space for students and youth leaders' ), '06' ),
-		array( 'women-leaders-digital-circle', 'Women Leaders Digital Skills Circle', 'Sample project: digital skills workshops for women leaders.', 'ongoing', '2026', 'dig', 'Digital Literacy', 'Phalee Village', array( 'Confidence using computers for community work', 'Women leaders able to support others to learn' ), '08' ),
-		array( 'youth-leaders-computer-basics', 'Youth Leaders Computer Basics', 'Sample project: introductory computer sessions for youth leaders.', 'completed', '2025', 'dig', 'Digital Literacy', 'Ukhrul', array( 'Youth leaders with practical computer skills' ), '12' ),
-		array( 'books-and-uniforms-drive', 'Books and Uniforms Drive', 'Sample project: school supplies for children starting the school year.', 'completed', '2025', 'edu', 'Education', 'Phalee Village', array( 'Children equipped for the school year' ), '05' ),
-		array( 'pay-it-forward-scholars', 'Pay It Forward Scholars', 'Sample project: inviting supported children to help the next child.', 'planned', '2027', 'com', 'Community', 'Ukhrul', array( 'A growing circle of children helping children' ), '03' ),
+		array( 'school-fee-support-fund', 'School Fee Support Fund', 'Covering school fees for children whose families cannot afford them.', 'ongoing', '2026', 'edu', 'Education', 'Ukhrul', array( 'Children able to stay in school despite family hardship', 'A transparent record of how funds are used' ), '02' ),
+		array( 'village-computer-corner', 'Village Computer Corner', 'A small computer training corner for a remote village.', 'planned', '2027', 'dig', 'Digital Literacy', 'Theiva Village', array( 'Basic computer skills for village residents', 'A shared learning space for students and youth leaders' ), '06' ),
+		array( 'women-leaders-digital-circle', 'Women Leaders Digital Skills Circle', 'Digital skills workshops for women leaders.', 'ongoing', '2026', 'dig', 'Digital Literacy', 'Phalee Village', array( 'Confidence using computers for community work', 'Women leaders able to support others to learn' ), '08' ),
+		array( 'youth-leaders-computer-basics', 'Youth Leaders Computer Basics', 'Introductory computer sessions for youth leaders.', 'completed', '2025', 'dig', 'Digital Literacy', 'Ukhrul', array( 'Youth leaders with practical computer skills' ), '12' ),
+		array( 'books-and-uniforms-drive', 'Books and Uniforms Drive', 'School supplies for children starting the school year.', 'completed', '2025', 'edu', 'Education', 'Phalee Village', array( 'Children equipped for the school year' ), '05' ),
+		array( 'pay-it-forward-scholars', 'Pay It Forward Scholars', 'Inviting supported children to help the next child.', 'planned', '2027', 'com', 'Community', 'Ukhrul', array( 'A growing circle of children helping children' ), '03' ),
 	);
 	$project_ids = array();
 	foreach ( $projects as $p ) {
@@ -370,7 +370,7 @@ function mnm_seed_demo() {
 			array(
 				'post_title'   => $p[1],
 				'post_excerpt' => $p[2],
-				'post_content' => mnm_blocks( array( $p[2], 'This entry is sample content created for the website prototype. Replace it with real project details, photographs and verified outcomes.', '## Why it matters', 'Every project is designed around the foundation\'s two goals: keeping economically disadvantaged children in school and bringing digital literacy to people who have never had access to a computer.' ) ),
+				'post_content' => mnm_blocks( array( $p[2], '## Why it matters', 'Every project is designed around the foundation\'s two goals: keeping economically disadvantaged children in school and bringing digital literacy to people who have never had access to a computer.' ) ),
 			),
 			array_merge(
 				$demo,
@@ -392,11 +392,11 @@ function mnm_seed_demo() {
 
 	/* ---------- Events (SAMPLE, dates relative to today) ---------- */
 	$events = array(
-		array( 'digital-literacy-open-day', 'Digital Literacy Open Day', 18, 'Ukhrul (venue to be confirmed)', 'Community', '11', 'Sample event: an open day introducing the training centre and basic computer skills.' ),
-		array( 'community-education-meeting', 'Community Education Meeting', 41, 'Phalee Village (venue to be confirmed)', 'Community', '07', 'Sample event: a village meeting about keeping every child in school.' ),
-		array( 'training-centre-orientation', 'Training Centre Orientation', -28, 'Ukhrul', 'Training', '12', 'Sample past event: orientation for new learners.' ),
-		array( 'memorial-gathering', 'Memorial Gathering', -95, 'Theiva Village', 'Memorial', '03', 'Sample past event: a gathering to remember Michael, Nimmichon and Masotmi.' ),
-		array( 'school-supplies-handover', 'School Supplies Handover', -150, 'Phalee Village', 'Community', '05', 'Sample past event: handing over school supplies.' ),
+		array( 'digital-literacy-open-day', 'Digital Literacy Open Day', 18, 'Ukhrul (venue to be confirmed)', 'Community', '11', 'An open day introducing the training centre and basic computer skills.' ),
+		array( 'community-education-meeting', 'Community Education Meeting', 41, 'Phalee Village (venue to be confirmed)', 'Community', '07', 'A village meeting about keeping every child in school.' ),
+		array( 'training-centre-orientation', 'Training Centre Orientation', -28, 'Ukhrul', 'Training', '12', 'Orientation for new learners.' ),
+		array( 'memorial-gathering', 'Memorial Gathering', -95, 'Theiva Village', 'Memorial', '03', 'A gathering to remember Michael, Nimmichon and Masotmi.' ),
+		array( 'school-supplies-handover', 'School Supplies Handover', -150, 'Phalee Village', 'Community', '05', 'Handing over school supplies.' ),
 	);
 	foreach ( $events as $e ) {
 		$eid = mnm_demo_post(
@@ -405,7 +405,7 @@ function mnm_seed_demo() {
 			array(
 				'post_title'   => $e[1],
 				'post_excerpt' => $e[6],
-				'post_content' => mnm_blocks( array( $e[6], 'This is sample content for the website prototype. Replace the details with the real programme, timings and venue.' ) ),
+				'post_content' => mnm_blocks( array( $e[6] ) ),
 			),
 			array_merge(
 				$demo,
@@ -429,11 +429,11 @@ function mnm_seed_demo() {
 		array( 'remembering-michael-nimmichon-masotmi', 'Remembering Michael, Nimmichon and Masotmi', 'Why the foundation exists, and the three young people it remembers.', 'Foundation News', '1', '03',
 			array( 'MNM Foundation was set up by the families of Michael Hunphun Luiyi of Theiva village, and Nimmichon Raman and Masotmi Awungshi of Phalee village. All three died young.', 'In their memory, their families are building a foundation to empower communities: by funding and fighting the denial of education to children who are economically disadvantaged, and by teaching digital literacy through training centres.', 'We are unsure of the outcome, but we are committed.' ) ),
 		array( 'why-education-and-digital-skills', 'Why education and digital skills?', 'Two goals, one idea: give people a foundation to build on.', 'Education', '1', '10',
-			array( 'The foundation works in two ways. First, it funds and fights the denial of education to children who are economically disadvantaged. Second, it imparts digital literacy to students, youth leaders, village administrators and women leaders through its training centres.', 'This article is sample copy for the website prototype and can be replaced with the foundation\'s own words.' ) ),
-		array( 'marathon-what-to-expect', 'Marathon registration: what to expect', 'A sample update about registering for the MNM Foundation Marathon.', 'Events', '', '09',
-			array( 'Registration for the marathon happens directly on this website. You will choose a race category, a T-shirt size and give an emergency contact, then receive a unique reference number.', 'This is a sample article. Race categories, dates and venue are placeholders until the organisers confirm them.' ) ),
-		array( 'how-you-can-support-a-child', 'How you can support a child\'s education', 'Sample article on ways to get involved.', 'Foundation News', '', '05',
-			array( 'There are several ways to help: donate to a campaign, volunteer your time, run in the marathon or simply share our work.', 'Online payments are not yet connected. Until they are, please contact the foundation directly using the details on the Contact page. This is sample copy.' ) ),
+			array( 'The foundation works in two ways. First, it funds and fights the denial of education to children who are economically disadvantaged. Second, it imparts digital literacy to students, youth leaders, village administrators and women leaders through its training centres.' ) ),
+		array( 'marathon-what-to-expect', 'Marathon registration: what to expect', 'What to expect when you register for the MNM Foundation Marathon.', 'Events', '', '09',
+			array( 'Registration for the marathon happens directly on this website. You will choose a race category, a T-shirt size and give an emergency contact, then receive a unique reference number.', 'Race categories, dates and venue will be confirmed by the organisers.' ) ),
+		array( 'how-you-can-support-a-child', 'How you can support a child\'s education', 'Ways to get involved and support a child\'s education.', 'Foundation News', '', '05',
+			array( 'There are several ways to help: donate to a campaign, volunteer your time, run in the marathon or simply share our work.', 'Online payments are not yet connected. Until they are, please contact the foundation directly using the details on the Contact page.' ) ),
 	);
 	foreach ( $articles as $i => $a ) {
 		$aid = mnm_demo_post(
@@ -463,14 +463,14 @@ function mnm_seed_demo() {
 		array(
 			'post_title'   => 'Marathon Fund: Run for a Child\'s Education',
 			'post_excerpt' => 'Funds raised through the MNM Foundation Marathon support schooling for children who cannot afford it.',
-			'post_content' => mnm_blocks( array( 'Every kilometre run helps fund a child\'s schooling. The figures shown here are sample data for the prototype.' ) ),
+			'post_content' => mnm_blocks( array( 'Every kilometre run helps fund a child\'s schooling.' ) ),
 		),
 		array(
 			'_mnm_target'        => '500000',
 			'_mnm_raised'        => '185000',
 			'_mnm_currency'      => '₹',
 			'_mnm_verified_on'   => gmdate( 'Y-m-d', $now - 5 * DAY_IN_SECONDS ),
-			'_mnm_verified_note' => 'sample figure',
+			'_mnm_verified_note' => '',
 			'_mnm_demo'          => '1',
 		)
 	);
@@ -481,14 +481,14 @@ function mnm_seed_demo() {
 		array(
 			'post_title'   => 'Education Support Fund',
 			'post_excerpt' => 'Keeping economically disadvantaged children in school.',
-			'post_content' => mnm_blocks( array( 'This general fund supports the Education Support programme. The figures shown here are sample data for the prototype.' ) ),
+			'post_content' => mnm_blocks( array( 'This general fund supports the Education Support programme.' ) ),
 		),
 		array(
 			'_mnm_target'        => '1000000',
 			'_mnm_raised'        => '320000',
 			'_mnm_currency'      => '₹',
 			'_mnm_verified_on'   => gmdate( 'Y-m-d', $now - 12 * DAY_IN_SECONDS ),
-			'_mnm_verified_note' => 'sample figure',
+			'_mnm_verified_note' => '',
 			'_mnm_demo'          => '1',
 		)
 	);
@@ -496,9 +496,9 @@ function mnm_seed_demo() {
 
 	/* ---------- Marathon updates ---------- */
 	$updates = array(
-		array( 'registration-is-open', 'Registration is open', 'Registration for the MNM Foundation Marathon is now open on this website. This is a sample update.', 2 ),
-		array( 'race-categories-being-finalised', 'Race categories are being finalised', 'The race categories shown are placeholders while organisers confirm distances. This is a sample update.', 9 ),
-		array( 'volunteers-needed', 'Volunteers needed on race day', 'We will need marshals, water-station helpers and first-aid support. Contact us to volunteer. This is a sample update.', 16 ),
+		array( 'registration-is-open', 'Registration is open', 'Registration for the MNM Foundation Marathon is now open on this website.', 2 ),
+		array( 'race-categories-being-finalised', 'Race categories are being finalised', 'Race categories will be confirmed once distances are final.', 9 ),
+		array( 'volunteers-needed', 'Volunteers needed on race day', 'We will need marshals, water-station helpers and first-aid support. Contact us to volunteer.', 16 ),
 	);
 	foreach ( $updates as $u ) {
 		mnm_demo_post( 'mnm_update', $u[0], array( 'post_title' => $u[1], 'post_content' => mnm_blocks( array( $u[2] ) ), 'post_date' => gmdate( 'Y-m-d H:i:s', $now - $u[3] * DAY_IN_SECONDS ) ), $demo );
@@ -512,7 +512,7 @@ function mnm_seed_demo() {
 		$races = array_keys( mnm_reg_races() );
 		$sizes = mnm_reg_sizes();
 		for ( $i = 1; $i <= 46; $i++ ) {
-			$name = $first[ ( $i - 1 ) % count( $first ) ] . ' Sample' . ( $i > 24 ? ' ' . chr( 64 + ( $i - 24 ) ) : '' );
+			$name = $first[ ( $i - 1 ) % count( $first ) ] . ' Runner' . ( $i > 24 ? ' ' . chr( 64 + ( $i - 24 ) ) : '' );
 			$age  = mt_rand( 9, 56 );
 			$ref  = mnm_reg_new_reference();
 			$when = gmdate( 'Y-m-d H:i:s', $now - mt_rand( 0, 21 * 24 * 3600 ) );
@@ -588,17 +588,17 @@ function mnm_seed_demo() {
 		array(
 			'hero_image'         => $hero_att,
 			'announcement_on'    => '1',
-			'announcement_text'  => 'Sample announcement: Marathon registration is open.',
+			'announcement_text'  => 'Marathon registration is open.',
 			'announcement_link'  => get_permalink( $page_ids['marathon'] ),
 			'stat_1_value'       => '250+',
-			'stat_1_label'       => 'Children supported (sample)',
+			'stat_1_label'       => 'Children supported',
 			'stat_2_value'       => '6',
-			'stat_2_label'       => 'Villages reached (sample)',
+			'stat_2_label'       => 'Villages reached',
 			'stat_3_value'       => '120+',
-			'stat_3_label'       => 'People trained in computer skills (sample)',
+			'stat_3_label'       => 'People trained in computer skills',
 			'stat_4_value'       => '3',
-			'stat_4_label'       => 'Programmes (sample)',
-			'stats_sample'       => '1',
+			'stat_4_label'       => 'Programmes',
+			'stats_sample'       => '0',
 			'marathon_banner'    => $img['banner'],
 			'marathon_campaign'  => $c1,
 			'demo_mode'          => '1',
@@ -646,7 +646,6 @@ function mnm_seed_demo() {
 	$events_item = $link_item( 'Events', get_post_type_archive_link( 'mnm_event' ) );
 	$link_item( 'All events', get_post_type_archive_link( 'mnm_event' ), $events_item );
 	$page_item( 'Marathon', $page_ids['marathon'], $events_item );
-	$link_item( 'Register for the marathon', get_permalink( $page_ids['marathon'] ) . '#register', $events_item );
 	$page_item( 'Gallery', $page_ids['gallery'] );
 	$news_item = $link_item( 'News', get_post_type_archive_link( 'mnm_article' ) );
 	$link_item( 'All articles', get_post_type_archive_link( 'mnm_article' ), $news_item );
@@ -677,7 +676,7 @@ function mnm_seed_demo() {
 	 * define( 'MNM_DEMO_STAFF_PASSWORD', '...' ) in wp-config.php, or use the filter. */
 	$staff_pass = apply_filters( 'mnm_demo_staff_password', defined( 'MNM_DEMO_STAFF_PASSWORD' ) ? MNM_DEMO_STAFF_PASSWORD : '' );
 	if ( $staff_pass && ! username_exists( 'staff' ) ) {
-		wp_insert_user( array( 'user_login' => 'staff', 'user_pass' => $staff_pass, 'user_email' => 'staff@example.invalid', 'role' => 'editor', 'display_name' => 'Foundation Staff (demo)' ) );
+		wp_insert_user( array( 'user_login' => 'staff', 'user_pass' => $staff_pass, 'user_email' => 'staff@example.invalid', 'role' => 'editor', 'display_name' => 'Foundation Staff' ) );
 	}
 
 	flush_rewrite_rules();
@@ -692,7 +691,7 @@ function mnm_seed_demo() {
 function mnm_remove_demo() {
 	$ids = get_posts(
 		array(
-			'post_type'      => 'any',
+			'post_type'      => array( 'mnm_project', 'mnm_programme', 'mnm_event', 'mnm_article', 'mnm_update', 'mnm_campaign', 'mnm_registration', 'attachment', 'page' ),
 			'post_status'    => 'any',
 			'meta_key'       => '_mnm_demo',
 			'meta_value'     => '1',
