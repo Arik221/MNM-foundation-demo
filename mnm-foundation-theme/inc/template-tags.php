@@ -57,6 +57,7 @@ function mnm_t_icon( $name, $size = 24 ) {
 		'arrow'     => '<path d="M5 12h14M13 6l6 6-6 6"/>',
 		'phone'     => '<path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/>',
 		'mail'      => '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.500 7 8.500 6.500L20.500 7"/>',
+		'home'      => '<path d="M3.5 11.2 12 4l8.5 7.2"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5.5h4V20"/>',
 		'menu'      => '<path d="M4 7h16M4 12h16M4 17h16"/>',
 		'close'     => '<path d="M6 6l12 12M18 6 6 18"/>',
 		'check'     => '<path d="m5 12.500 4.500 4.500L19 7.500"/>',

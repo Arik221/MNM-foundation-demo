@@ -598,3 +598,46 @@ body { background: radial-gradient(1100px 620px at 6% -8%, rgba(205, 239, 224, .
 .spotlight__card .mnm-demo-badge { background: #fff6bf; color: #6b5800; border-color: #ecd75a; }
 .spotlight .regcount strong { color: #fff; }
 .spotlight__card, .spotlight__card .mnm-progress { color: var(--ink); }
+
+/* Home tab: icon only on desktop (label kept for screen readers), icon + label in the mobile menu */
+.primary-nav .menu-home a { display: inline-flex; align-items: center; gap: .6rem; padding-inline: .8rem; }
+.primary-nav .menu-home svg { flex: none; }
+.menu-home__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 960px) {
+	.menu-home__label { position: static; width: auto; height: auto; clip: auto; overflow: visible; }
+	.primary-nav .menu-home svg { width: 28px; height: 28px; }
+}
+@media (max-width: 960px) {
+	.primary-nav { padding-top: calc(var(--hdr) + 3.2rem); }
+	.primary-nav .menu { padding: 0; border-radius: 0; background: none; box-shadow: none; backdrop-filter: none; gap: 0; }
+	.primary-nav .menu-home a { padding-inline: 0; }
+}
+
+/* ---------- Dropdown (Events > All events / Marathon) ---------- */
+.primary-nav .menu > li { position: relative; }
+.primary-nav .menu > .menu-item-has-children > a { padding-right: .4rem; }
+.sub-toggle { display: inline-grid; place-items: center; width: 28px; height: 28px; margin-right: .35rem; padding: 0; border: 0; border-radius: 50%; background: none; color: inherit; cursor: pointer; vertical-align: middle; }
+.primary-nav .menu > li > a, .primary-nav .menu > li > .sub-toggle { display: inline-block; vertical-align: middle; }
+.primary-nav .menu > li > a { display: inline-flex; }
+.primary-nav .menu > li { display: flex; align-items: center; }
+.is-scrolled .sub-toggle { color: var(--ink); }
+.sub-toggle svg { width: 14px; height: 14px; transition: transform .35s var(--out); }
+.menu-item-has-children.is-open > .sub-toggle svg { transform: rotate(180deg); }
+.primary-nav .sub-menu { position: absolute; left: 0; top: calc(100% + .7rem); min-width: 230px; margin: 0; padding: .5rem; list-style: none; background: #fff; border-radius: 22px; box-shadow: 0 30px 60px -20px rgba(10, 42, 50, .45), 0 0 0 1px rgba(10, 42, 50, .06); opacity: 0; visibility: hidden; transform: translate3d(0, 10px, 0) scale(.98); transform-origin: 20% 0; transition: opacity .25s var(--out), transform .35s var(--out), visibility .25s; z-index: 5; }
+.primary-nav .sub-menu::before { content: ""; position: absolute; left: 0; right: 0; top: -.8rem; height: .8rem; }
+.primary-nav .sub-menu a, .is-scrolled .primary-nav .sub-menu a { display: block; padding: .7rem 1rem; border-radius: 16px; color: var(--ink); font: 700 .95rem var(--f-head); white-space: nowrap; background: none !important; }
+.primary-nav .sub-menu .current-menu-item > a { background: var(--mint) !important; }
+.menu-item-has-children.is-open > .sub-menu { opacity: 1; visibility: visible; transform: none; }
+@media (hover: hover) and (pointer: fine) {
+	.menu-item-has-children:hover > .sub-menu { opacity: 1; visibility: visible; transform: none; }
+	.menu-item-has-children:hover > .sub-toggle svg { transform: rotate(180deg); }
+	.primary-nav .sub-menu a:hover { background: var(--mist) !important; }
+}
+@media (max-width: 960px) {
+	.primary-nav .menu > li { display: block; }
+	.sub-toggle { display: none; }
+	.primary-nav .sub-menu { position: static; opacity: 1; visibility: visible; transform: none; background: none; box-shadow: none; padding: 0 0 .4rem 1rem; min-width: 0; }
+	.primary-nav .sub-menu::before { display: none; }
+	.primary-nav .sub-menu a, .is-scrolled .primary-nav .sub-menu a { color: rgba(255, 255, 255, .8); font-size: 1.3rem; padding: .45rem 0; }
+	.primary-nav .sub-menu .current-menu-item > a { background: none !important; color: var(--sun); }
+}

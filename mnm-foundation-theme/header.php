@@ -53,7 +53,7 @@ $ann = mnm_t_announcement();
 					'container'      => false,
 					'menu_class'     => 'menu',
 					'fallback_cb'    => false,
-					'depth'          => 1,
+					'depth'          => 2,
 				)
 			);
 			?>

@@ -188,3 +188,20 @@ function mnm_theme_plugin_notice() {
 	}
 }
 add_action( 'admin_notices', 'mnm_theme_plugin_notice' );
+
+/**
+ * Prepend a standard Home tab (house icon) to the primary menu.
+ *
+ * @param string   $items Menu items HTML.
+ * @param stdClass $args  Menu arguments.
+ * @return string
+ */
+function mnm_theme_home_tab( $items, $args ) {
+	if ( isset( $args->theme_location ) && 'primary' === $args->theme_location ) {
+		$class = 'menu-item menu-home' . ( is_front_page() ? ' current-menu-item' : '' );
+		$home  = '<li class="' . esc_attr( $class ) . '"><a href="' . esc_url( home_url( '/' ) ) . '"' . ( is_front_page() ? ' aria-current="page"' : '' ) . '>' . mnm_t_icon( 'home', 20 ) . '<span class="menu-home__label">' . esc_html__( 'Home', 'mnm-foundation-theme' ) . '</span></a></li>';
+		$items = $home . $items;
+	}
+	return $items;
+}
+add_filter( 'wp_nav_menu_items', 'mnm_theme_home_tab', 10, 2 );

@@ -617,30 +617,25 @@ function mnm_seed_demo() {
 
 	/* ---------- Menus ---------- */
 	$menu = wp_get_nav_menu_object( 'Primary Menu' );
-	if ( ! $menu ) {
-		$mid   = wp_create_nav_menu( 'Primary Menu' );
-		$items = array(
-			array( 'About', get_permalink( $page_ids['about'] ), $page_ids['about'], 'page' ),
-			array( 'Programmes', get_post_type_archive_link( 'mnm_programme' ), 0, '' ),
-			array( 'Projects & Impact', get_post_type_archive_link( 'mnm_project' ), 0, '' ),
-			array( 'Events', get_post_type_archive_link( 'mnm_event' ), 0, '' ),
-			array( 'Marathon', get_permalink( $page_ids['marathon'] ), $page_ids['marathon'], 'page' ),
-			array( 'Gallery', get_permalink( $page_ids['gallery'] ), $page_ids['gallery'], 'page' ),
-			array( 'News', get_post_type_archive_link( 'mnm_article' ), 0, '' ),
-			array( 'Contact', get_permalink( $page_ids['contact'] ), $page_ids['contact'], 'page' ),
-		);
-		foreach ( $items as $it ) {
-			$args = array( 'menu-item-title' => $it[0], 'menu-item-status' => 'publish' );
-			if ( $it[2] ) {
-				$args += array( 'menu-item-type' => 'post_type', 'menu-item-object' => 'page', 'menu-item-object-id' => $it[2] );
-			} else {
-				$args += array( 'menu-item-type' => 'custom', 'menu-item-url' => $it[1] );
-			}
-			wp_update_nav_menu_item( $mid, 0, $args );
-		}
-	} else {
-		$mid = $menu->term_id;
+	if ( $menu ) {
+		wp_delete_nav_menu( $menu->term_id ); // Rebuilt on every run so the structure below always applies.
 	}
+	$mid  = wp_create_nav_menu( 'Primary Menu' );
+	$page_item = function ( $title, $page_id, $parent = 0 ) use ( $mid ) {
+		return wp_update_nav_menu_item( $mid, 0, array( 'menu-item-title' => $title, 'menu-item-status' => 'publish', 'menu-item-type' => 'post_type', 'menu-item-object' => 'page', 'menu-item-object-id' => $page_id, 'menu-item-parent-id' => $parent ) );
+	};
+	$link_item = function ( $title, $url, $parent = 0 ) use ( $mid ) {
+		return wp_update_nav_menu_item( $mid, 0, array( 'menu-item-title' => $title, 'menu-item-status' => 'publish', 'menu-item-type' => 'custom', 'menu-item-url' => $url, 'menu-item-parent-id' => $parent ) );
+	};
+	$page_item( 'About', $page_ids['about'] );
+	$link_item( 'Programmes', get_post_type_archive_link( 'mnm_programme' ) );
+	$link_item( 'Projects & Impact', get_post_type_archive_link( 'mnm_project' ) );
+	$events_item = $link_item( 'Events', get_post_type_archive_link( 'mnm_event' ) );
+	$link_item( 'All events', get_post_type_archive_link( 'mnm_event' ), $events_item );
+	$page_item( 'Marathon', $page_ids['marathon'], $events_item );
+	$page_item( 'Gallery', $page_ids['gallery'] );
+	$link_item( 'News', get_post_type_archive_link( 'mnm_article' ) );
+	$page_item( 'Contact', $page_ids['contact'] );
 	$fmenu = wp_get_nav_menu_object( 'Footer Menu' );
 	if ( ! $fmenu ) {
 		$fid = wp_create_nav_menu( 'Footer Menu' );

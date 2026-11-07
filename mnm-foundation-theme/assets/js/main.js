@@ -24,11 +24,27 @@
 		window.matchMedia( '(min-width: 961px)' ).addEventListener( 'change', function () { setNav( false ); } );
 	}
 
+	/* ---------- Dropdown submenus (hover via CSS; button + keyboard + touch here) ---------- */
+	$( '.menu-item-has-children', nav || document ).forEach( function ( li ) {
+		var link = li.querySelector( ':scope > a' ), sub = li.querySelector( ':scope > .sub-menu' ); if ( ! link || ! sub ) { return; }
+		var id = 'sub-' + Math.random().toString( 36 ).slice( 2, 8 ); sub.id = id;
+		var btn = document.createElement( 'button' ); btn.type = 'button'; btn.className = 'sub-toggle'; btn.setAttribute( 'aria-expanded', 'false' ); btn.setAttribute( 'aria-controls', id );
+		btn.setAttribute( 'aria-label', 'Show ' + link.textContent.trim() + ' submenu' );
+		btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>';
+		link.insertAdjacentElement( 'afterend', btn );
+		function set( open ) { li.classList.toggle( 'is-open', open ); btn.setAttribute( 'aria-expanded', open ? 'true' : 'false' ); }
+		btn.addEventListener( 'click', function ( e ) { e.stopPropagation(); set( ! li.classList.contains( 'is-open' ) ); } );
+		li.addEventListener( 'keydown', function ( e ) { if ( e.key === 'Escape' && li.classList.contains( 'is-open' ) ) { set( false ); btn.focus(); e.stopPropagation(); } } );
+		li.addEventListener( 'focusout', function ( e ) { if ( ! li.contains( e.relatedTarget ) ) { set( false ); } } );
+		document.addEventListener( 'click', function ( e ) { if ( ! li.contains( e.target ) ) { set( false ); } } );
+	} );
+
 	/* ---------- Tab-bar indicator that slides to the hovered / current item ---------- */
 	var menu = nav && nav.querySelector( '.menu' );
 	if ( menu && ! reduce ) {
 		var ind = document.createElement( 'span' ); ind.className = 'nav-ind'; ind.setAttribute( 'aria-hidden', 'true' ); menu.insertBefore( ind, menu.firstChild );
-		var cur = menu.querySelector( '.current-menu-item, [aria-current]' ); cur = cur ? cur.closest( 'li' ) : null;
+		var cur = menu.querySelector( '.current-menu-item, .current-menu-ancestor, [aria-current]' );
+		while ( cur && cur.parentNode !== menu ) { cur = cur.parentNode.closest( 'li' ); }
 		var moveTo = function ( li ) {
 			if ( ! li ) { ind.style.opacity = 0; return; }
 			ind.style.width = li.offsetWidth + 'px'; ind.style.transform = 'translateX(' + li.offsetLeft + 'px)'; ind.style.opacity = 1;
