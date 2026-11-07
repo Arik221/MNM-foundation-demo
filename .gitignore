@@ -1,0 +1,3 @@
+wordpress/
+*.log
+node_modules/
