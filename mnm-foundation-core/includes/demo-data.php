@@ -627,15 +627,40 @@ function mnm_seed_demo() {
 	$link_item = function ( $title, $url, $parent = 0 ) use ( $mid ) {
 		return wp_update_nav_menu_item( $mid, 0, array( 'menu-item-title' => $title, 'menu-item-status' => 'publish', 'menu-item-type' => 'custom', 'menu-item-url' => $url, 'menu-item-parent-id' => $parent ) );
 	};
-	$page_item( 'About', $page_ids['about'] );
-	$link_item( 'Programmes', get_post_type_archive_link( 'mnm_programme' ) );
-	$link_item( 'Projects & Impact', get_post_type_archive_link( 'mnm_project' ) );
+	$about_url = get_permalink( $page_ids['about'] );
+	$about_item = $page_item( 'About', $page_ids['about'] );
+	foreach ( array( 'Our story' => '#story', 'In memory' => '#memorial', 'Mission & vision' => '#mission', 'Core values' => '#values' ) as $lbl => $hash ) {
+		$link_item( $lbl, $about_url . $hash, $about_item );
+	}
+	$prog_item = $link_item( 'Programmes', get_post_type_archive_link( 'mnm_programme' ) );
+	foreach ( get_posts( array( 'post_type' => 'mnm_programme', 'posts_per_page' => 10, 'orderby' => 'menu_order title', 'order' => 'ASC' ) ) as $pp ) {
+		$link_item( get_the_title( $pp ), get_permalink( $pp ), $prog_item );
+	}
+	$proj_item = $link_item( 'Projects & Impact', get_post_type_archive_link( 'mnm_project' ) );
+	$link_item( 'All projects', get_post_type_archive_link( 'mnm_project' ), $proj_item );
+	foreach ( (array) get_terms( array( 'taxonomy' => 'mnm_project_cat', 'hide_empty' => true ) ) as $tm ) {
+		if ( $tm instanceof WP_Term ) {
+			$link_item( $tm->name, get_term_link( $tm ), $proj_item );
+		}
+	}
 	$events_item = $link_item( 'Events', get_post_type_archive_link( 'mnm_event' ) );
 	$link_item( 'All events', get_post_type_archive_link( 'mnm_event' ), $events_item );
 	$page_item( 'Marathon', $page_ids['marathon'], $events_item );
+	$link_item( 'Register for the marathon', get_permalink( $page_ids['marathon'] ) . '#register', $events_item );
 	$page_item( 'Gallery', $page_ids['gallery'] );
-	$link_item( 'News', get_post_type_archive_link( 'mnm_article' ) );
-	$page_item( 'Contact', $page_ids['contact'] );
+	$news_item = $link_item( 'News', get_post_type_archive_link( 'mnm_article' ) );
+	$link_item( 'All articles', get_post_type_archive_link( 'mnm_article' ), $news_item );
+	foreach ( (array) get_terms( array( 'taxonomy' => 'mnm_article_cat', 'hide_empty' => true ) ) as $tm ) {
+		if ( $tm instanceof WP_Term ) {
+			$link_item( $tm->name, get_term_link( $tm ), $news_item );
+		}
+	}
+	$contact_item = $page_item( 'Contact', $page_ids['contact'] );
+	$gi_url = get_permalink( $page_ids['get-involved'] );
+	$link_item( 'Send a message', get_permalink( $page_ids['contact'] ) . '#contact-form', $contact_item );
+	$link_item( 'Donate', $gi_url . '#donate', $contact_item );
+	$link_item( 'Volunteer', $gi_url . '#volunteer', $contact_item );
+
 	$fmenu = wp_get_nav_menu_object( 'Footer Menu' );
 	if ( ! $fmenu ) {
 		$fid = wp_create_nav_menu( 'Footer Menu' );

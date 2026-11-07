@@ -14,7 +14,7 @@ while ( have_posts() ) :
 	the_post();
 	mnm_t_page_header( __( 'About us', 'mnm-foundation-theme' ), __( 'A foundation built in memory, for the future', 'mnm-foundation-theme' ), mnm_t_setting( 'intro' ) );
 	?>
-<section class="section">
+<section class="section" id="story">
 	<div class="wrap two-col">
 		<div class="reveal">
 			<p class="eyebrow"><?php esc_html_e( 'Our origin', 'mnm-foundation-theme' ); ?></p>
@@ -48,24 +48,24 @@ while ( have_posts() ) :
 </section>
 <?php endif; ?>
 
-<section class="section">
+<section class="section" id="mission">
 	<div class="wrap mvd__grid">
 		<article class="mvd__card mvd__card--blue reveal">
-			<span class="mvd__no">01</span><h3><?php esc_html_e( 'Mission', 'mnm-foundation-theme' ); ?></h3>
+			<h3><?php esc_html_e( 'Mission', 'mnm-foundation-theme' ); ?></h3>
 			<ul class="ticks"><?php foreach ( $mission as $line ) : ?><li><?php echo mnm_t_icon( 'check', 18 ); // phpcs:ignore WordPress.Security.EscapeOutput ?> <span><?php echo esc_html( $line ); ?></span></li><?php endforeach; ?></ul>
 		</article>
-		<article class="mvd__card mvd__card--green reveal"><span class="mvd__no">02</span><h3><?php esc_html_e( 'Vision', 'mnm-foundation-theme' ); ?></h3><p><?php echo esc_html( mnm_t_setting( 'vision' ) ); ?></p></article>
-		<article class="mvd__card mvd__card--yellow reveal"><span class="mvd__no">03</span><h3><?php esc_html_e( 'Our dream', 'mnm-foundation-theme' ); ?></h3><p><?php echo esc_html( mnm_t_setting( 'dream' ) ); ?></p></article>
+		<article class="mvd__card mvd__card--green reveal"><h3><?php esc_html_e( 'Vision', 'mnm-foundation-theme' ); ?></h3><p><?php echo esc_html( mnm_t_setting( 'vision' ) ); ?></p></article>
+		<article class="mvd__card mvd__card--yellow reveal"><h3><?php esc_html_e( 'Our dream', 'mnm-foundation-theme' ); ?></h3><p><?php echo esc_html( mnm_t_setting( 'dream' ) ); ?></p></article>
 	</div>
 </section>
 
 <?php if ( $values ) : ?>
-<section class="section section--grey">
+<section class="section section--grey" id="values">
 	<div class="wrap">
 		<?php mnm_t_section_head( __( 'What guides us', 'mnm-foundation-theme' ), __( 'Our core values', 'mnm-foundation-theme' ) ); ?>
 		<div class="values">
 			<?php foreach ( $values as $i => $v ) : ?>
-				<div class="value reveal"><span class="value__no"><?php echo esc_html( str_pad( $i + 1, 2, '0', STR_PAD_LEFT ) ); ?></span><h3><?php echo esc_html( $v['label'] ); ?></h3><p><?php echo esc_html( $v['desc'] ); ?></p></div>
+				<div class="value reveal"><h3><?php echo esc_html( $v['label'] ); ?></h3><p><?php echo esc_html( $v['desc'] ); ?></p></div>
 			<?php endforeach; ?>
 		</div>
 	</div>

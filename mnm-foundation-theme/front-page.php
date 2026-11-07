@@ -76,7 +76,7 @@ $circ   = 326.7;
 			<?php wp_reset_postdata(); endif; ?>
 		</div>
 	</div>
-	<a class="hero__cue" href="#statement"><span class="hero__cue-text"><?php esc_html_e( 'Scroll', 'mnm-foundation-theme' ); ?></span><span class="hero__cue-arrow" aria-hidden="true"><?php echo mnm_t_icon( 'arrow', 22 ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span></a>
+	<a class="hero__cue" href="#statement" aria-label="<?php esc_attr_e( 'Scroll to content', 'mnm-foundation-theme' ); ?>"><span class="hero__cue-arrow" aria-hidden="true"><?php echo mnm_t_icon( 'arrow', 22 ); // phpcs:ignore WordPress.Security.EscapeOutput ?></span></a>
 </section>
 
 <div class="marquee" aria-hidden="true">
