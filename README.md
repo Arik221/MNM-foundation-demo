@@ -1,6 +1,8 @@
 # MNM Foundation: WordPress website prototype
 
 **Live click-through demo (WordPress Playground, no install):** https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/Arik221/mnm-foundation-demo/main/playground/blueprint.json
+_If the link above fails, try the install-only variant, which skips the demo-content step and lets you load it yourself from Foundation > Demo Content: https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/Arik221/MNM-foundation-demo/main/playground/blueprint-install-only.json_
+
 _It runs the real theme and plugin in your browser with demo content and resets on every visit. It needs this repository to be public (raw files must be reachable) and has not been tested yet; first load can take a minute while demo photos are processed. Admin login is automatic._
 
 A native WordPress site (custom theme + small companion plugin) for MNM Foundation, Ukhrul, Manipur.

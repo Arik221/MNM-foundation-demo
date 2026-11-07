@@ -1,12 +1,38 @@
 {
 	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
 	"landingPage": "/",
-	"preferredVersions": { "php": "8.3", "wp": "latest" },
-	"features": { "networking": true },
+	"preferredVersions": {
+		"php": "8.3",
+		"wp": "latest"
+	},
+	"features": {
+		"networking": true
+	},
 	"login": true,
 	"steps": [
-		{ "step": "installPlugin", "pluginData": { "resource": "url", "url": "https://raw.githubusercontent.com/Arik221/mnm-foundation-demo/main/dist/mnm-foundation-core.zip" }, "options": { "activate": true } },
-		{ "step": "installTheme", "themeData": { "resource": "url", "url": "https://raw.githubusercontent.com/Arik221/mnm-foundation-demo/main/dist/mnm-foundation-theme.zip" }, "options": { "activate": true } },
-		{ "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; wp_set_current_user( 1 ); mnm_seed_demo();" }
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "url",
+				"url": "https://raw.githubusercontent.com/Arik221/MNM-foundation-demo/main/dist/mnm-foundation-core.zip"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "installTheme",
+			"themeData": {
+				"resource": "url",
+				"url": "https://raw.githubusercontent.com/Arik221/MNM-foundation-demo/main/dist/mnm-foundation-theme.zip"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php\nini_set( 'memory_limit', '512M' );\nset_time_limit( 0 );\nrequire '/wordpress/wp-load.php';\nwp_set_current_user( 1 );\ntry {\n\tmnm_seed_demo();\n} catch ( Throwable $e ) {\n\terror_log( 'MNM seed failed: ' . $e->getMessage() );\n}\n"
+		}
 	]
 }
